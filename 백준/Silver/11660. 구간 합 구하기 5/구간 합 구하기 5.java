@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class Main {
-	static int N,M,x1,y1,x2,y2, ans;
+	static int N,M,x1,y1,x2,y2;
 	static int[][] arr, prefix;
 	
 	public static void main(String[] args) throws Exception{
@@ -23,16 +23,18 @@ public class Main {
 		prefix = new int[N+1][N+1];
 		makePrefix();
 		
+		StringBuilder sb = new StringBuilder();
 		for (int i = 0; i < M; i++) {
-			ans = 0;
 			st = new StringTokenizer(br.readLine());
 			x1 = Integer.parseInt(st.nextToken());
 			y1 = Integer.parseInt(st.nextToken());
 			x2 = Integer.parseInt(st.nextToken());
 			y2 = Integer.parseInt(st.nextToken());
-			calc();
-			System.out.println(ans);
+			
+			int ans = prefix[x2][y2] - prefix[x2][y1-1]-prefix[x1-1][y2]+prefix[x1-1][y1-1];
+			sb.append(ans).append("\n");
 		}
+		System.out.println(sb.toString());
 		
 	}
 	
@@ -42,10 +44,6 @@ public class Main {
 				prefix[i][j] = prefix[i-1][j]+prefix[i][j-1]- prefix[i-1][j-1]+arr[i-1][j-1];
 			}
 		}
-	}
-	
-	static void calc() {
-		ans = prefix[x2][y2] - prefix[x2][y1-1]-prefix[x1-1][y2]+prefix[x1-1][y1-1];
 	}
 
 }
