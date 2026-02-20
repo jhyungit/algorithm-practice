@@ -25,5 +25,4 @@ while heap:
         if degree[i] == 0:
             heapq.heappush(heap,i)
 
-
 print(" ".join(ans))
