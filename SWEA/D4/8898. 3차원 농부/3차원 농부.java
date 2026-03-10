@@ -13,6 +13,7 @@ public class Solution {
 		StringTokenizer st;
 		int T = Integer.parseInt(br.readLine().trim());
 		
+		StringBuilder sb = new StringBuilder();
 		for(int tc = 1; tc <= T; tc++) {
 			cnt = 0;
 			cowZ = new ArrayList<>();
@@ -43,8 +44,11 @@ public class Solution {
 			horseZ.sort((a,b) -> a-b);
 			
 			twoPointer();
-			System.out.println("#"+tc+" "+minDist+" "+ cnt);
+			sb.append("#").append(tc).append(" ")
+			.append(minDist).append(" ")
+			.append(cnt).append('\n');
 		}
+		System.out.println(sb);
 	}
 	
 	static void twoPointer() {
